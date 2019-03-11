@@ -5,6 +5,8 @@ function Player(x, y){
   this.acceleration = 0.15
   this.velocity = 0
   this.mass = 1
+  this.jmp = false
+  this.gravity = 0.15
 
   this.display = function() {
     fill(255, 150);
@@ -19,8 +21,29 @@ function Player(x, y){
         //console.info(this.y)
       }
       else{
-        this.y = 620
-         this.velocity = 0
+        //this.y = 620
+        if (this.jmp){
+          //console.info("fg")
+          //this.velocity = -5
+
+          this.acceleration = -0.50
+          console.info(this.acceleration >= this.gravity)
+          this.velocity = this.acceleration
+          this.y -= 10
+          this.acceleration += 0.1
+          while (this.acceleration <= this.gravity) {
+            this.acceleration += 0.0075
+            this.velocity += this.acceleration
+            console.info(this.velocity)
+          }
+          
+          
+          this.jmp = false
+
+          console.info(this.jmp)
+        }
+        
+        //this.velocity = 0
         
       }
      
@@ -29,25 +52,29 @@ function Player(x, y){
   this.update = function(){
     this.applyGravity();
     rect(this.x,this.y,100,100)
-    
+    //console.info(this.y)
   }
   this.jump = function(key)
   {
     if (((key == ' ') || (key == 'w')) && (this.y >= 550))
       {
-        this.y -= 70
+        //console.info("fg")
+        
+        this.jmp = true
       }
+      else 
+        this.jmp = false
   }
 
   this.move = function(){
   if ((keyIsDown(65))||keyIsDown(LEFT_ARROW)){
-    player.x -= 1;
+    player.x -= 5;
   }
   if ((keyIsDown(83))||keyIsDown(DOWN_ARROW)){  //crouch/fall
-    player.y += 1;
+    player.y += 0;
   }
   if ((keyIsDown(68))||keyIsDown(RIGHT_ARROW)){
-    player.x += 1;
+    player.x += 5;
   }
 }
 
@@ -65,13 +92,11 @@ function setup() {
 
 
 function draw() {
-  
   clear();
   background(0)
   player.move();
   player.display();
-  player.update()
-  
+  player.update()  
 }
 
 
