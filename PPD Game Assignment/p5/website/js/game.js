@@ -5,6 +5,8 @@ function Player(x, y){
   this.acceleration = 0.15
   this.velocity = 0
   this.mass = 1
+  this.gravity = 0.15
+  this.jmp = false
 
   this.display = function() {
     fill(255, 150);
@@ -19,9 +21,20 @@ function Player(x, y){
         //console.info(this.y)
       }
       else{
-        this.y = 620
-         this.velocity = 0
         
+        if(this.jmp){
+          this.acceleration = -1
+          this.velocity = 0
+          while(this.acceleration <= this.gravity){
+            this.acceleration += 0.1
+            this.velocity += this.acceleration
+            this.y += this.velocity
+            console.info("y", this.y)
+            console.info("acc", this.acceleration)
+            console.info("vel", this.velocity)
+          }
+        }
+        this.jmp = false
       }
      
   }
@@ -35,19 +48,19 @@ function Player(x, y){
   {
     if (((key == ' ') || (key == 'w')) && (this.y >= 550))
       {
-        this.y -= 70
+        this.jmp = true
       }
   }
 
   this.move = function(){
   if ((keyIsDown(65))||keyIsDown(LEFT_ARROW)){
-    player.x -= 1;
+    player.x -= 5;
   }
   if ((keyIsDown(83))||keyIsDown(DOWN_ARROW)){  //crouch/fall
-    player.y += 1;
+    player.y += 0;
   }
   if ((keyIsDown(68))||keyIsDown(RIGHT_ARROW)){
-    player.x += 1;
+    player.x += 5;
   }
 }
 
