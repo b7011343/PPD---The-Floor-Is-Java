@@ -16,11 +16,14 @@ function Player(x, y){
   }
 
   this.applyGravity = function(){
-      console.info(this.velocity)
+      //console.info(this.velocity)
+      /*
       if (this.velocity == 0)
         this.onSurface = true
       else
         this.onSurface = false
+      */
+    
       
     if (!this.onSurface)
       {
@@ -38,9 +41,9 @@ function Player(x, y){
             this.acceleration += 0.1
             this.velocity += this.acceleration
             this.y += this.velocity
-            console.info("y", this.y)
-            console.info("acc", this.acceleration)
-            console.info("vel", this.velocity)
+            //console.info("y", this.y)
+            //console.info("acc", this.acceleration)
+            //console.info("vel", this.velocity)
           }
         }
         this.jmp = false
@@ -58,6 +61,7 @@ function Player(x, y){
     if (((key == ' ') || (key == 'w')) && (this.onSurface))
       {
         this.jmp = true
+        
       }
   }
 
