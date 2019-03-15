@@ -13,6 +13,8 @@ function setup() {
   background(0);
   //translate(0, 310)
   //player = new Character(200, 200);
+  setInterval(drawLava, 250);
+
 }
 
 
@@ -20,20 +22,23 @@ function draw() {
   
   clear();
   background(0)
-
+  
   updateGame()
  
 
 }
 
 function updateGame(){
+  //drawLava()
+
   player.move();
   player.display();
   player.update()
   platform.display()
-  
   plat2.display()
   checkPlatforms()
+
+  
 }
 function keyPressed()
 {
@@ -49,4 +54,24 @@ function checkPlatforms()
       player.onSurface = true
     }
   });
+}
+
+
+
+var count = 1
+function drawLava()
+{
+  var x = 0
+  var y = 650
+  var lava = createImg("assets/lava/"+count+".png")
+  lava.position(x,y)
+  lava.size(1280,151)
+  if (count < 10){
+    count++
+  }
+  else{
+    count = 1
+  }
+  console.info(count)
+  updateGame()
 }
