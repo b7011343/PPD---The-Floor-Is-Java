@@ -11,7 +11,7 @@ function Player(x, y){
   
 
   this.display = function() {
-    fill(255, 150);
+    fill(204, 0, 0);
     rect(this.x,this.y,100,100)
   }
 

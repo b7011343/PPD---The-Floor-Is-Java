@@ -7,7 +7,9 @@ function Platform(x, y, height, width){
   this.hasPlayerOn = false
 
   this.display = function(){
-    fill(255, 150)
+    fill(51, 51, 255)
+    strokeWeight(2)
+    stroke(255)
     rect(this.x,this.y,this.width,this.height)
     this.collision();
   }
