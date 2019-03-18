@@ -5,7 +5,7 @@ function Player(x, y){
   this.acceleration = 0.15
   this.velocity = 0.01
   this.mass = 1
-  this.gravity = 0.15
+  this.gravity = 0.2
   this.jmp = false
   this.onSurface = false
   
@@ -35,12 +35,13 @@ function Player(x, y){
       else{
         
         if(this.jmp){
-          this.acceleration = -1
+          this.acceleration = -1.2
           this.velocity = 0
           while(this.acceleration <= this.gravity){
             this.acceleration += 0.1
             this.velocity += this.acceleration
             this.y += this.velocity
+            
             //console.info("y", this.y)
             //console.info("acc", this.acceleration)
             //console.info("vel", this.velocity)
