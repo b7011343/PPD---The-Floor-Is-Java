@@ -4,9 +4,10 @@
 
 var player = new Player(100,100); 
 var platform = new Platform(100,300,50,200)
-var plat2 = new Platform(500, 400, 50, 100)
+var plat2 = new Platform(650, 400, 50, 100)
+var plat3 = new Platform (1000, 500, 50, 5 )
 
-var platformList = [platform, plat2]
+var platformList = [platform, plat2, plat3]
 
 function setup() {
   createCanvas(1280, 720);
@@ -21,7 +22,7 @@ function setup() {
 function draw() {
   clear();
   background(0)
-  
+  translate(-player.x+590, 0)
   updateGame()
  
 
@@ -33,12 +34,17 @@ function updateGame(){
   player.move();
   player.display();
   player.update()
-  platform.display()
-  plat2.display()
+  //platform.display()
+  //plat2.display()
   checkPlatforms()
-
+  //screenScroll()
   
 }
+
+function screenScroll(){
+  translate(player.x-300, 0)
+}
+
 function keyPressed()
 {
   player.jump(key);
@@ -48,6 +54,7 @@ function checkPlatforms()
 {
   player.onSurface = false
   platformList.forEach(element => {
+    element.display()
     if (element.hasPlayerOn)
     {
       player.onSurface = true
