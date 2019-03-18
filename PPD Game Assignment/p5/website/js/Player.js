@@ -8,11 +8,14 @@ function Player(x, y){
   this.gravity = 0.15
   this.jmp = false
   this.onSurface = false
+  this.length = 100
+
+
   
 
   this.display = function() {
     fill(204, 0, 0);
-    rect(this.x,this.y,100,100)
+    rect(this.x,this.y,this.length,this.length)
   }
 
   this.applyGravity = function(){
@@ -53,7 +56,7 @@ function Player(x, y){
 
   this.update = function(){
     this.applyGravity();
-    rect(this.x,this.y,100,100)
+    rect(this.x,this.y,this.length,this.length)
     
   }
   this.jump = function(key)

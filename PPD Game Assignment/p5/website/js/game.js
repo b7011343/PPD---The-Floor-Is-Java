@@ -2,7 +2,7 @@
 
 
 
-var player = new Player(100,100); 
+var player = new Player(100,200); 
 var platform = new Platform(100,300,50,200)
 var plat2 = new Platform(650, 400, 50, 100)
 var plat3 = new Platform (1000, 500, 50, 5 )
@@ -37,12 +37,13 @@ function updateGame(){
   //platform.display()
   //plat2.display()
   checkPlatforms()
-  //screenScroll()
+  screenScroll()
   
 }
 
 function screenScroll(){
   translate(player.x-300, 0)
+  player.x += 5
 }
 
 function keyPressed()
@@ -78,6 +79,6 @@ function drawLava()
   else{
     count = 1
   }
-  console.info(count)
+  //console.info(count)
   updateGame()
 }
