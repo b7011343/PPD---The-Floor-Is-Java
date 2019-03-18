@@ -38,7 +38,7 @@ function updateGame(){
   //plat2.display()
   checkPlatforms()
   screenScroll()
-  
+  death()
 }
 
 function screenScroll(){
@@ -81,4 +81,14 @@ function drawLava()
   }
   //console.info(count)
   updateGame()
+}
+
+
+function death()
+{
+  if (player.isDead())
+    {
+      player.x = 100
+      player.y = 100
+    }
 }
