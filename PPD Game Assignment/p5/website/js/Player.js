@@ -70,7 +70,7 @@ function Player(x, y){
 
   this.isDead = function()
   {
-    return (player.x+player.length > 700);
+    return (player.y+player.length > 700);
   }
 
   this.move = function(){

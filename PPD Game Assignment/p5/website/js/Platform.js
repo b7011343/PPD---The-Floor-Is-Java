@@ -34,7 +34,7 @@ function Platform(x, y, height, width){
     //collisons for side of platform
     //left hand side
     //player moves by x+5 each tick
-    if ((player.x+player.length == this.x) && (player.y < this.y+height) && (player.y+player.length > this.y))
+    if ((player.x+ player.length == this.x) && (player.y < this.y+height) && (player.y+player.length > this.y))
     {
       console.info("left of platform collision")
       player.x-=5

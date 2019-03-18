@@ -1,11 +1,11 @@
 
 
 
-
+var devMode;
 var player = new Player(100,200); 
 var platform = new Platform(100,300,50,200)
 var plat2 = new Platform(650, 400, 50, 100)
-var plat3 = new Platform (1000, 500, 50, 5 )
+var plat3 = new Platform (1100, 500, 50, 5 )
 
 var platformList = [platform, plat2, plat3]
 
@@ -31,7 +31,9 @@ function draw() {
 function updateGame(){
   //drawLava()
 
-  player.move();
+  if (devMode)
+    player.move();
+  
   player.display();
   player.update()
   //platform.display()
@@ -43,12 +45,15 @@ function updateGame(){
 
 function screenScroll(){
   translate(player.x-300, 0)
-  player.x += 5
+  if (!devMode)
+    player.x += 5
 }
 
 function keyPressed()
 {
   player.jump(key);
+  if (key == 'm')
+    devMode = true
 }
 
 function checkPlatforms()
