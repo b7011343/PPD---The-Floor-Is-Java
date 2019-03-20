@@ -1,9 +1,10 @@
+
 function LevelSelector(level){
     
     this.level = level
     this.endX
     this.endY
-    this.endFlag
+    this.message
     // max x distance a player can jump on the same y level is 235+100(player width)
 
     this.levelSelect = function()
@@ -14,12 +15,14 @@ function LevelSelector(level){
             {
                 this.endX = 1400
                 this.endY = 300
-                this.endFlag = new EndFlag(endX, endY)
+                endFlag = new EndFlag(this.endX, this.endY)
                 var plat1 = new Platform(-1280, 300, 50, 1600)
                 var plat2 = new Platform(550, 300, 50, 100)
                 var plat3 = new Platform(885, 300, 50, 100)
                 var plat4 = new Platform(1110, 300, 50, 500)
                 
+                this.message = "-TUTORIAL LEVEL-\nPress SPACE to jump and avoid falling in the lava!"
+
                 platformList = [plat1, plat2, plat3, plat4]
                 break;
             }
