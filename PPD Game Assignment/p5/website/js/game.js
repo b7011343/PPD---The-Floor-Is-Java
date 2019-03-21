@@ -16,10 +16,7 @@ var levelSelector
 
 var platformList// = [plat1, plat2, plat3]
 
-preload()
-{
-  font = loadFont('assets/font.ttf')
-}
+
 
 
 function setup() {

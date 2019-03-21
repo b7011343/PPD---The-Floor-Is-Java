@@ -28,15 +28,50 @@ function LevelSelector(level){
             }
             case 1:
             {
+                this.endX = 200
+                this.endY = 300
+                endFlag = new EndFlag(this.endX, this.endY)
+                var plat1 = new Platform(-1280, 300, 50, 1600)
+                
+                this.message = "-LEVEL 1-"
+
+                platformList = [plat1]
                 break;
             }
             case 2:
             {
+                this.endX = 200
+                this.endY = 300
+                endFlag = new EndFlag(this.endX, this.endY)
+                var plat1 = new Platform(-1280, 300, 50, 1600)
+                
+                this.message = "-LEVEL 2-"
+
+                platformList = [plat1]
                 break;
             }
             case 3:
             {
+                this.endX = 200
+                this.endY = 300
+                endFlag = new EndFlag(this.endX, this.endY)
+                var plat1 = new Platform(-1280, 300, 50, 1600)
+                
+                this.message = "-LEVEL 3-"
+
+                platformList = [plat1]
                 break;
+            }
+            case 4:
+            {
+                this.endX = 200
+                this.endY = 300
+                endFlag = new EndFlag(this.endX, this.endY)
+                var plat1 = new Platform(-1280, 300, 50, 1600)
+                
+                this.message = "-LEVEL 4-"
+
+                platformList = [plat1]
             }
         }
     }
