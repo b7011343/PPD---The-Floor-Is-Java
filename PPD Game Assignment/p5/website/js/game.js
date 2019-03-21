@@ -5,7 +5,8 @@ var imgX3 = 1280
 var backgroundTiles = [imgX1, imgX2, imgX3]
 var endFlag
 let bg
-var font
+var deathSound
+var bgMusic
 
 var devMode;
 var player = new Player(-500,200);
@@ -16,7 +17,11 @@ var levelSelector
 
 var platformList// = [plat1, plat2, plat3]
 
+function preload()
+{
+  bgMusic = loadSound("assets/mainMusic.mp3")
 
+}
 
 
 function setup() {
@@ -25,7 +30,8 @@ function setup() {
   //background(0);
   //translate(0, 310)
   //player = new Character(200, 200);
-  bg = loadImage('assets/bg1.png')
+  bg = loadImage('assets/bg/bg1.png')
+  deathSound = loadSound("assets/scream.mp3")
   setInterval(drawLava, 400);
   levelSelector = new LevelSelector(0);
   levelSelector.levelSelect()
@@ -77,10 +83,11 @@ function updateBackground()
 }
 
 function updateGame(){
-  //drawLava()
-
   if (devMode)
+  {
     player.move();
+    bgMusic.stop()
+  }
     
   endFlag.display()
   player.display();
@@ -166,9 +173,9 @@ function drawLava()
 {
 
   
-  bg = loadImage('assets/bg'+count+'.png')
+  bg = loadImage('assets/bg/bg'+count+'.png')
   
-  if (count < 2){
+  if (count < 10){
     count++
   }
   else{
@@ -183,8 +190,12 @@ function death()
 {
   if (player.isDead())
     {
+      bgMusic.stop()
+      //bgMusic = loadSound("assets/mainMusic.mp3")
+      deathSound.play()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
       player.y = 200
+      bgMusic.play()
     }
 }
