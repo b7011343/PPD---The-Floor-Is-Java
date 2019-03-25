@@ -15,6 +15,8 @@ var levelSelector
 // var plat2 = new Platform(650, 400, 50, 100)
 // var plat3 = new Platform (1100, 500, 50, 5 )
 
+
+var testButton = new Button(player.x-200, player.y-100, 150, 50, 255, 255, 255, "TestButton")
   
 var platformList// = [plat1, plat2, plat3]
 var spikeList
@@ -22,7 +24,8 @@ var spikeList
 function preload()
 {
   bgMusic = loadSound("assets/mainMusic.mp3")
-  
+  deathSound = loadSound("assets/scream.mp3")
+  //deathSound.play()
 }
 
 
@@ -34,6 +37,7 @@ function setup() {
   //player = new Character(200, 200);
   bg = loadImage('assets/bg/bg1.png')
   deathSound = loadSound("assets/scream.mp3")
+
   setInterval(drawLava, 400);
   levelSelector = new LevelSelector(0);
   levelSelector.levelSelect()
@@ -95,9 +99,8 @@ function updateGame(){
   endFlag.display()
   player.display();
   player.update()
+  testButton.display()
   
-  //platform.display()
-  //plat2.display()
   checkPlatforms()
   displaySpikes()
   screenScroll()
@@ -199,10 +202,11 @@ function drawLava()
 
 function death()
 {
+  
   if (player.isDead())
     {
       bgMusic.stop()
-      bgMusic = loadSound("assets/mainMusic.mp3")
+      
       deathSound.play()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500

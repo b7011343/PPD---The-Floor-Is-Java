@@ -1,4 +1,4 @@
-function Button(x, y, height, width, fillR, fillG, fillB, message)
+function Button(x, y, width, height, fillR, fillG, fillB, message)
 {
     this.x = x;
     this.y = y;
@@ -9,7 +9,7 @@ function Button(x, y, height, width, fillR, fillG, fillB, message)
     this.fillB = fillB;
     this.message = message;
 
-    this.show = function()
+    this.display = function()
     {
         strokeWeight(3)
         stroke(0)
