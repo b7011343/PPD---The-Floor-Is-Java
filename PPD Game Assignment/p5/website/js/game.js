@@ -16,11 +16,12 @@ var levelSelector
 // var plat3 = new Platform (1100, 500, 50, 5 )
 
 var platformList// = [plat1, plat2, plat3]
+var spikeList
 
 function preload()
 {
   bgMusic = loadSound("assets/mainMusic.mp3")
-
+  
 }
 
 
@@ -35,6 +36,7 @@ function setup() {
   setInterval(drawLava, 400);
   levelSelector = new LevelSelector(0);
   levelSelector.levelSelect()
+  frameRate(120)
 }
 
 
@@ -95,10 +97,12 @@ function updateGame(){
   //platform.display()
   //plat2.display()
   checkPlatforms()
+  displaySpikes()
   screenScroll()
   death()
   checkWin()
   displayMessage()
+  
 }
 
 function displayMessage()
@@ -163,7 +167,11 @@ function checkPlatforms()
   });
 }
 
-
+function displaySpikes(){
+  spikeList.forEach(element => {
+    element.display()
+  })
+}
 
 
 
@@ -191,7 +199,7 @@ function death()
   if (player.isDead())
     {
       bgMusic.stop()
-      //bgMusic = loadSound("assets/mainMusic.mp3")
+      bgMusic = loadSound("assets/mainMusic.mp3")
       deathSound.play()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
