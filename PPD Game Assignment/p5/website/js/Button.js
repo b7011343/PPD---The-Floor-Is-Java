@@ -8,7 +8,6 @@ function Button(x, y, height, width, fillR, fillG, fillB, message)
     this.fillG = fillG;
     this.fillB = fillB;
     this.message = message;
-       // rect(this.x, this.y, this.width, this.length)
 
     this.show = function()
     {
@@ -25,17 +24,14 @@ function Button(x, y, height, width, fillR, fillG, fillB, message)
         text(this.message, this.x+(this.width/2), this.y+(1.3*this.height/2))
     }
 
-
-   
-
-    this.click = function()
+    this.clicked = function()
     {
-        var clicked = false
-        if ()
+        var click = false
+        if ((mouseX >= this.x)&&(mouseX <= this.x+this.width)&&(mouseY >= this.y)&&(mouseY <= this.y+height))
             {
-                clicked = true
+                click = true
             }
 
-        return clicked
+        return click
     }
 }
