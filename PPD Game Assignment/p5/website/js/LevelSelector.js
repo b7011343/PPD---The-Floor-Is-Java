@@ -24,6 +24,7 @@ function LevelSelector(level){
 
                 var spike1 = new Spikes(100, 300)
                 
+                
                 this.message = "-TUTORIAL LEVEL-\nPress SPACE to jump and avoid falling in the lava!"
 
                 platformList = [plat1, plat2, plat3, plat4]

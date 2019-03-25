@@ -15,6 +15,7 @@ var levelSelector
 // var plat2 = new Platform(650, 400, 50, 100)
 // var plat3 = new Platform (1100, 500, 50, 5 )
 
+  
 var platformList// = [plat1, plat2, plat3]
 var spikeList
 
@@ -94,6 +95,7 @@ function updateGame(){
   endFlag.display()
   player.display();
   player.update()
+  
   //platform.display()
   //plat2.display()
   checkPlatforms()
@@ -115,6 +117,7 @@ function displayMessage()
     stroke(0)
     text(levelSelector.message, 640-300, 50)
     stroke(255)
+
 }
 
 
