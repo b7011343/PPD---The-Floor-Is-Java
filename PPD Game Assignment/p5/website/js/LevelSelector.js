@@ -21,6 +21,9 @@ function LevelSelector(level){
                 var plat2 = new Platform(550, 300, 50, 100)
                 var plat3 = new Platform(885, 300, 50, 100)
                 var plat4 = new Platform(1110, 300, 50, 500)
+
+
+                
                 
                 this.message = "-TUTORIAL LEVEL-\nPress SPACE to jump and avoid falling in the lava!"
 
