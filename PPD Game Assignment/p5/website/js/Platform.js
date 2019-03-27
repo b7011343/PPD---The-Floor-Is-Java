@@ -15,7 +15,10 @@ function Platform(x, y, height, width){
   }
   
   this.collision = function(){
-    //collisions for top of platform
+    if ((player.x+ player.length == this.x) && (player.y < this.y+height) && (player.y+player.length > this.y))
+    {
+      player.x-=5
+    }
     if ((player.y+100 >= this.y) && (player.y+100 <= this.y+height) && (player.x+100 >= this.x) && (player.x <= this.x+width) ) 
     {
         player.velocity *= 0
@@ -30,17 +33,5 @@ function Platform(x, y, height, width){
           this.firstIteration = true
         }
     }
-    
-    //collisons for side of platform
-    //left hand side
-    //player moves by x+5 each tick
-    if ((player.x+ player.length == this.x) && (player.y < this.y+height) && (player.y+player.length > this.y))
-    {
-      console.info("left of platform collision")
-      player.x-=5
-    }
-    
-  }
-
-  
+  }  
 }
