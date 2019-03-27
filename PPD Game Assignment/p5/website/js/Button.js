@@ -8,9 +8,11 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
     this.fillG = fillG;
     this.fillB = fillB;
     this.message = message;
+    this.visible = false
 
     this.display = function()
     {
+        this.visible = true
         var strokeColour = 0
         strokeWeight(3)
         if (this.overButton() == true)
@@ -33,6 +35,6 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
 
     this.overButton = function()
     {
-       return ((mouseX >= this.x) && (mouseX <= this.x+this.width) && (mouseY >= this.y) && (mouseY <= this.y+height));
+       return ((mouseX >= this.x) && (mouseX <= this.x+this.width) && (mouseY >= this.y) && (mouseY <= this.y+height) && (this.visible));
     }
 }

@@ -11,7 +11,7 @@ function LevelSelector(level){
     {
         switch (this.level)
         {
-            case 0:
+            case 0:     // TUTORIAL LEVEL (DESIGNED AS A GROUP)
             {
                 this.endX = 1400
                 this.endY = 300
@@ -31,7 +31,7 @@ function LevelSelector(level){
                 
                 break;
             }
-            case 1:
+            case 1:     // LEVEL 1 (JACOB)
             {
                 
                 this.endX = 200
@@ -44,7 +44,7 @@ function LevelSelector(level){
                 platformList = [plat1]
                 break;
             }
-            case 2:
+            case 2:     // LEVEL 2 (JOE)
             {
                 this.endX = 200
                 this.endY = 300
@@ -56,7 +56,7 @@ function LevelSelector(level){
                 platformList = [plat1]
                 break;
             }
-            case 3:
+            case 3:     // LEVEL 3 (CONNOR)
             {
                 this.endX = 200
                 this.endY = 300
@@ -68,7 +68,7 @@ function LevelSelector(level){
                 platformList = [plat1]
                 break;
             }
-            case 4:
+            case 4:     //LEVEL 4 (GEORGE)
             {
                 this.endX = 200
                 this.endY = 300

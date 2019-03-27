@@ -38,7 +38,6 @@ function preload()
   deathSound = loadSound("assets/scream.mp3")
 }
 
-
 function setup() {
   createCanvas(1280, 720);
   bg = loadImage('assets/bg/bg1.png')
@@ -69,7 +68,6 @@ function setup() {
   }
 }
 
-
 function draw() {
   clear();
   
@@ -80,12 +78,14 @@ function draw() {
       image(menuBG, 0, 0)
       btnPlay.display()
       btnHighscores.display()
+      hideLevelMenuButtons()
       break;
     }
     
     case 1:
     {
       image(menuBG, 0, 0)
+      hideMenuButtons()
       btnLevel0.display()
       btnLevel1.display()
       btnLevel2.display()
@@ -103,29 +103,64 @@ function draw() {
       break;
     }
   }
-  
-  
+}
+
+function hideMenuButtons()
+{
+  btnPlay.visible = false
+  btnHighscores.visible = false
+}
+
+function hideLevelMenuButtons()
+{
+  btnLevel0.visible = false
+  btnLevel1.visible = false
+  btnLevel2.visible = false
+  btnLevel3.visible = false
+  btnLevel4.visible = false
+}
+
+function startLevel(level)
+{
+    menuFlag = 2
+    setup()
+    levelSelector.level = level
+    levelSelector.levelSelect()
 }
 
 function mousePressed()
 {
-  //console.info("test")
   if (btnPlay.overButton())
   {
     menuFlag = 1
     setup()
   }
-  if (btnBack.overButton())
-  {
-    menuFlag--
-    setup()
-  }
-  if (btnLevel0.overButton())
-  {
-    menuFlag = 2
-    setup()
-    levelSelector.level = 0
-    levelSelector.levelSelect()
+  else{
+    if (btnBack.overButton())
+    {
+      menuFlag--
+      setup()
+    }
+    if (btnLevel0.overButton())
+    {
+      startLevel(0)
+    }
+    if (btnLevel1.overButton())
+    {
+      startLevel(1)
+    }
+    if (btnLevel2.overButton())
+    {
+      startLevel(2)
+    }
+    if (btnLevel3.overButton())
+    {
+      startLevel(3)
+    }
+    if (btnLevel4.overButton())
+    {
+      startLevel(4)
+    }
   }
 }
 
@@ -137,7 +172,6 @@ function updateBackground()
   image(bg, backgroundTiles[2], 0)
   var index
   
-  
   if (bgCounter+1 == 3)
   {
     index = 0
@@ -145,8 +179,6 @@ function updateBackground()
   else{
     index = bgCounter+1
   }
-  
-  
   
   if(player.x > backgroundTiles[index]+600)
   {
@@ -156,9 +188,7 @@ function updateBackground()
     {
       bgCounter = 0
     }
-    
   }
-  
 }
 
 function updateGame(){
@@ -167,10 +197,11 @@ function updateGame(){
     player.move();
     bgMusic.stop()
   }
+  hideLevelMenuButtons()
+  hideMenuButtons()
   endFlag.display()
   player.display();
   player.update() 
-  //btnBack.display()
   checkPlatforms()
   displaySpikes()
   screenScroll()
@@ -182,19 +213,16 @@ function updateGame(){
 function displayMessage()
 {
   textAlign(CENTER)
-  ///textFont(font)
     textSize(35)
-
     fill(255)
     stroke(0)
     text(levelSelector.message, 640-300, 50)
     stroke(255)
-
 }
 
 
 
-function checkWin() //////////// needs linking to menu
+function checkWin() 
 {
   if (player.x >= levelSelector.endX)
     {
@@ -205,11 +233,9 @@ function checkWin() //////////// needs linking to menu
         element.width = 0
         element.height = 0
       });
-
-      // we need to implement the level selection menu into this portion!
-
-      levelSelector.level++
-      levelSelector.levelSelect()
+      bgMusic.stop()
+      menuFlag = 1
+      setup()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
       player.y = 200
