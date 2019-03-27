@@ -13,7 +13,6 @@ function LevelSelector(level){
         {
             case 0:
             {
-                bgMusic.play()
                 this.endX = 1400
                 this.endY = 300
                 endFlag = new EndFlag(this.endX, this.endY)

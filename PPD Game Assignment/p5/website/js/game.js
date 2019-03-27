@@ -1,3 +1,21 @@
+// Menu Variables
+menuFlag = 0   // 0 = Menu      1 = Level Selection Screen      2 = Game
+btnBack = new Button(10, 660, 100, 50, 255, 97, 48, "<=Back")
+// Button(x, y, width, height, fillR, fillG, fillB, message)
+// Menu Buttons
+var btnPlay = new Button(490, 250, 300, 100, 255, 97, 48, "Play")
+var btnHighscores = new Button(490, 400, 300, 100, 255, 97, 48, "Highscores")
+
+
+// Level Selection Menu Buttons
+var btnLevel0 = new Button(490, 210, 300, 50, 255, 97, 48, "Tutorial")
+var btnLevel1 = new Button(490, 270, 300, 50, 255, 97, 48, "Level 1")
+var btnLevel2 = new Button(490, 330, 300, 50, 255, 97, 48, "Level 2")
+var btnLevel3 = new Button(490, 390, 300, 50, 255, 97, 48, "Level 3")
+var btnLevel4 = new Button(490, 450, 300, 50, 255, 97, 48, "Level 4")
+
+
+// Game Variables
 var bgCounter = 0
 var imgX1 = -1280
 var imgX2 = 0
@@ -7,54 +25,108 @@ var endFlag
 let bg
 var deathSound
 var bgMusic
-
 var devMode;
-var player = new Player(-500,200);
 var levelSelector
-// var plat1 = new Platform(100,300,50,300)
-// var plat2 = new Platform(650, 400, 50, 100)
-// var plat3 = new Platform (1100, 500, 50, 5 )
-
-
-var testButton = new Button(player.x-200, player.y-100, 150, 50, 255, 255, 255, "TestButton")
-  
-var platformList// = [plat1, plat2, plat3]
+var player = new Player(-500,200); 
+var platformList
 var spikeList
+let menuBG
 
 function preload()
 {
   bgMusic = loadSound("assets/mainMusic.mp3")
   deathSound = loadSound("assets/scream.mp3")
-  //deathSound.play()
 }
 
 
 function setup() {
-  var cvs = createCanvas(1280, 720);
-  //cvs.style('text-align', 'center')
-  //background(0);
-  //translate(0, 310)
-  //player = new Character(200, 200);
+  createCanvas(1280, 720);
   bg = loadImage('assets/bg/bg1.png')
   deathSound = loadSound("assets/scream.mp3")
-
-  setInterval(drawLava, 400);
-  levelSelector = new LevelSelector(0);
-  levelSelector.levelSelect()
-  frameRate(120)
+  menuBG = loadImage('assets/bg/menuBG.jpg')
+  
+  switch(menuFlag)
+  {
+    case 0:
+    {
+      break;
+    }
+    
+    case 1:
+    {
+      break;
+    }
+    
+    case 2:
+    {
+      setInterval(drawLava, 400);
+      levelSelector = new LevelSelector(0);
+      levelSelector.levelSelect()
+      frameRate(120)
+      bgMusic.play()
+      break;
+    }
+  }
 }
 
 
 function draw() {
   clear();
-  //background(0)
-  //bg.position(300,400)
-  translate(-player.x+590, 0)
   
-  updateBackground()
-  updateGame()
+  switch(menuFlag)
+  {
+    case 0:
+    {
+      image(menuBG, 0, 0)
+      btnPlay.display()
+      btnHighscores.display()
+      break;
+    }
+    
+    case 1:
+    {
+      image(menuBG, 0, 0)
+      btnLevel0.display()
+      btnLevel1.display()
+      btnLevel2.display()
+      btnLevel3.display()
+      btnLevel4.display()
+      btnBack.display()
+      break;
+    }
+    
+    case 2:
+    {
+      translate(-player.x+590, 0)
+      updateBackground()
+      updateGame()
+      break;
+    }
+  }
   
   
+}
+
+function mousePressed()
+{
+  //console.info("test")
+  if (btnPlay.overButton())
+  {
+    menuFlag = 1
+    setup()
+  }
+  if (btnBack.overButton())
+  {
+    menuFlag--
+    setup()
+  }
+  if (btnLevel0.overButton())
+  {
+    menuFlag = 2
+    setup()
+    levelSelector.level = 0
+    levelSelector.levelSelect()
+  }
 }
 
 
@@ -64,7 +136,7 @@ function updateBackground()
   image(bg, backgroundTiles[1], 0)
   image(bg, backgroundTiles[2], 0)
   var index
-
+  
   
   if (bgCounter+1 == 3)
   {
@@ -86,7 +158,7 @@ function updateBackground()
     }
     
   }
-
+  
 }
 
 function updateGame(){
@@ -95,25 +167,22 @@ function updateGame(){
     player.move();
     bgMusic.stop()
   }
-    
   endFlag.display()
   player.display();
-  player.update()
-  testButton.display()
-  
+  player.update() 
+  //btnBack.display()
   checkPlatforms()
   displaySpikes()
   screenScroll()
   death()
   checkWin()
   displayMessage()
-  
 }
 
 function displayMessage()
 {
-    textAlign(CENTER)
-    ///textFont(font)
+  textAlign(CENTER)
+  ///textFont(font)
     textSize(35)
 
     fill(255)
@@ -195,8 +264,7 @@ function drawLava()
   else{
     count = 1
   }
-  //console.info(count)
-  //updateGame()
+ 
 }
 
 
