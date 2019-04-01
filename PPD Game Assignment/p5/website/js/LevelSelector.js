@@ -59,15 +59,36 @@ function LevelSelector(level){
             }
             case 2:     // LEVEL 2 (JOE)
             {
-                this.endX = 200
+                this.endX = 6280
                 this.endY = 300
                 endFlag = new EndFlag(this.endX, this.endY)
                 var plat1 = new Platform(-1280, 300, 50, 1600)
-                
+                var plat2 = new Platform(550, 300, 50, 100)
+                var plat3 = new Platform(880, 225, 50, 100)
+                var plat4 = new Platform(1210, 300, 50, 100)
+                var plat5 = new Platform(1540, 300, 50, 350)
+                var plat6 = new Platform(2120, 300, 50, 950)
+                var plat7 = new Platform(3300, 300, 50, 100)
+                var plat8 = new Platform(3630, 225, 50, 100)
+                var plat9 = new Platform(3960, 150, 50, 100)
+                var plat10 = new Platform(4290, 75, 50, 100)
+                var plat11 = new Platform(4290, 300, 50, 100)
+                var plat12 = new Platform(4620, 300, 50, 800)
+                var plat13 = new Platform(5650, 300, 50, 100)
+                var plat14 = new Platform(5980, 300, 50, 500)
+
+                var spike1 = new Spikes(1715, 300)
+                var spike2 = new Spikes(2350, 300)
+                var spike3 = new Spikes(2480, 300)
+                var spike4 = new Spikes(2810, 300)
+                var spike5 = new Spikes(4290, 75)
+
                 this.message = "-LEVEL 2-"
 
-                platformList = [plat1]
+                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, plat13, plat14]
+                spikeList = [spike1, spike2, spike3, spike4, spike5]
                 break;
+
             }
             case 3:     // LEVEL 3 (CONNOR)
             {
