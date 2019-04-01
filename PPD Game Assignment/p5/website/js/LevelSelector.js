@@ -11,7 +11,7 @@ function LevelSelector(level){
     {
         switch (this.level)
         {
-            case 0:     // TUTORIAL LEVEL (DESIGNED AS A GROUP)
+            case 0:     // TUTORIAL LEVEL (DESIGNED AS A GROUP) / testing
             {
                 this.endX = 1400
                 this.endY = 300

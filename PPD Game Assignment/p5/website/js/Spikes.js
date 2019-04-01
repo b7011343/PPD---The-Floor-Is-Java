@@ -1,5 +1,5 @@
 function Spikes(x, y){
-    this.width = 50
+    this.width = 25
     
     this.x1 = x 
     this.x2 = x + this.width
@@ -15,5 +15,12 @@ function Spikes(x, y){
         strokeWeight(2)
         stroke(0)
         triangle(this.x1, this.y1, this.x2, this.y2, this.x3, this.y3)
+        triangle(this.x2, this.y2, this.x2 + this.width, this.y2, this.x3 + this.width, this.y3)
+    }
+
+    this.collision = function(){
+        if (player.x + player.length >= this.x1 && player.x <= this.x2 + this.width && player.y + player.length >= this.y3 && player.y + player.length <= this.y1){
+            player.impale = true
+        }
     }
 }
