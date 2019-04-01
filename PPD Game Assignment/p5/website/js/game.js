@@ -14,6 +14,9 @@ var btnLevel2 = new Button(490, 330, 300, 50, 255, 97, 48, "Level 2")
 var btnLevel3 = new Button(490, 390, 300, 50, 255, 97, 48, "Level 3")
 var btnLevel4 = new Button(490, 450, 300, 50, 255, 97, 48, "Level 4")
 
+// Game Buttons
+var btnQuit = new Button(10, 660, 150, 50, 255, 97, 48, "Quit")
+var btnMute = new Button(1120, 660, 150, 50, 255, 97, 48, "Mute")
 
 // Game Variables
 var bgCounter = 0
@@ -31,6 +34,7 @@ var player = new Player(-500,200);
 var platformList
 var spikeList
 let menuBG
+var muteFlag = true
 
 function preload()
 {
@@ -79,6 +83,7 @@ function draw() {
       btnPlay.display()
       btnHighscores.display()
       hideLevelMenuButtons()
+      hideGameButtons()
       break;
     }
     
@@ -86,6 +91,7 @@ function draw() {
     {
       image(menuBG, 0, 0)
       hideMenuButtons()
+      hideGameButtons()
       btnLevel0.display()
       btnLevel1.display()
       btnLevel2.display()
@@ -97,8 +103,10 @@ function draw() {
     
     case 2:
     {
-      translate(-player.x+590, 0)
       updateBackground()
+      btnMute.display()
+      btnQuit.display()
+      translate(-player.x+590, 0)
       updateGame()
       break;
     }
@@ -120,6 +128,12 @@ function hideLevelMenuButtons()
   btnLevel4.visible = false
 }
 
+function hideGameButtons()
+{
+  btnMute.visible = false
+  btnQuit.visible = false
+}
+
 function startLevel(level)
 {
     menuFlag = 2
@@ -135,7 +149,7 @@ function mousePressed()
     menuFlag = 1
     setup()
   }
-  else{
+  if (menuFlag == 1){
     if (btnBack.overButton())
     {
       menuFlag--
@@ -161,6 +175,26 @@ function mousePressed()
     {
       startLevel(4)
     }
+  }
+  else{
+    if (btnMute.overButton())
+      {
+        if (bgMusic.isPlaying())
+          {
+            bgMusic.stop()
+            muteFlag = false
+          }
+        else{
+          bgMusic.loop()
+          muteFlag = true
+        }
+      }
+    if(btnQuit.overButton())
+      {
+        console.info("quit ")
+        menuFlag = 1
+        setup()
+      }
   }
 }
 
@@ -202,6 +236,9 @@ function updateGame(){
   endFlag.display()
   player.display();
   player.update() 
+  
+
+
   checkPlatforms()
   displaySpikes()
   screenScroll()
@@ -306,6 +343,9 @@ function death()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
       player.y = 200
-      bgMusic.play()
+      if (muteFlag)
+        {
+          bgMusic.play()
+        }
     }
 }
