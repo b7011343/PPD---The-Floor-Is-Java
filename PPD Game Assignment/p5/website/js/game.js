@@ -308,6 +308,7 @@ function checkPlatforms()
 function displaySpikes(){
   spikeList.forEach(element => {
     element.display()
+    element.collision()
   })
 }
 

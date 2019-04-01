@@ -9,6 +9,7 @@ function Player(x, y){
   this.jmp = false
   this.onSurface = false
   this.length = 100
+  this.impale = false
   
 
   
@@ -70,7 +71,12 @@ function Player(x, y){
 
   this.isDead = function()
   {
-    return (player.y+player.length > 700);
+    if (player.y+player.length > 700)
+      return true;
+    if (this.impale){
+      this.impale = false
+      return true
+    }
   }
 
   this.move = function(){
