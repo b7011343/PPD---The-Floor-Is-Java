@@ -35,6 +35,7 @@ var platformList
 var spikeList
 let menuBG
 var muteFlag = true
+var mX = mouseX
 
 function preload()
 {
@@ -65,7 +66,7 @@ function setup() {
       setInterval(drawLava, 400);
       levelSelector = new LevelSelector(0);
       levelSelector.levelSelect()
-      frameRate(120)
+      //frameRate(120)
       bgMusic.play()
       break;
     }
@@ -103,10 +104,9 @@ function draw() {
     
     case 2:
     {
-      updateBackground()
-      btnMute.display()
-      btnQuit.display()
       translate(-player.x+590, 0)
+      mX = (mouseX+player.x-590)
+      updateBackground()
       updateGame()
       break;
     }
@@ -192,6 +192,9 @@ function mousePressed()
     if(btnQuit.overButton())
       {
         console.info("quit ")
+        backgroundTiles = [imgX1, imgX2, imgX3]
+        player.x = -500
+        player.y = 200
         menuFlag = 1
         setup()
       }
@@ -236,9 +239,11 @@ function updateGame(){
   endFlag.display()
   player.display();
   player.update() 
-  
-
-
+  btnMute.display()
+  btnMute.x = player.x+530
+  btnQuit.display()
+  btnQuit.x = player.x-575
+ 
   checkPlatforms()
   displaySpikes()
   screenScroll()
@@ -247,6 +252,12 @@ function updateGame(){
   displayMessage()
 }
 
+function keyPressed()
+{
+  player.jump(key);
+  if (key == 'm')
+    devMode = true
+}
 function displayMessage()
 {
   textAlign(CENTER)
@@ -285,12 +296,6 @@ function screenScroll(){
     player.x += 5
 }
 
-function keyPressed()
-{
-  player.jump(key);
-  if (key == 'm')
-    devMode = true
-}
 
 function checkPlatforms()
 {

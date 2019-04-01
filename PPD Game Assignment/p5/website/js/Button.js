@@ -35,6 +35,11 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
 
     this.overButton = function()
     {
-       return ((mouseX >= this.x) && (mouseX <= this.x+this.width) && (mouseY >= this.y) && (mouseY <= this.y+height) && (this.visible));
+        
+        if ((menuFlag==0)||(menuFlag==1))
+        {
+            mX = mouseX;
+        }
+        return ((mX >= this.x) && (mX <= this.x+this.width) && (mouseY >= this.y) && (mouseY <= this.y+height) && (this.visible));
     }
 }
