@@ -9,6 +9,7 @@ function LevelSelector(level){
 
     this.levelSelect = function()
     {
+        spikeList = []
         switch (this.level)
         {
             case 0:     // TUTORIAL LEVEL (DESIGNED AS A GROUP) / testing

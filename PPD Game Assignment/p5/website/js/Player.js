@@ -39,7 +39,8 @@ function Player(x, y){
       else{
         
         if(this.jmp){
-          this.acceleration = -1
+          
+          this.acceleration = -1.08 //this was -1, not -1.08
           this.velocity = 0
           while(this.acceleration <= this.gravity){
             this.acceleration += 0.1
