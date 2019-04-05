@@ -52,12 +52,25 @@ function preload()
 {
   bgMusic = loadSound("assets/mainMusic.mp3")
   deathSound = loadSound("assets/scream.mp3")
-  HS = new Highscore(1)
+
+  //if (1 >= parseInt(localStorage.getItem('lvl')) >= 4)
+  if (isNaN(parseInt(localStorage.getItem('lvl'))))
+  {
+      localStorage.setItem('lvl', 1)
+      Level = parseInt(localStorage.getItem('lvl'))
+
+  }
+  else
+  {
+    Level = parseInt(localStorage.getItem('lvl'))
+  }
+  console.info(Level)
+  HS = new Highscore(Level)
+  importUserSave()
 }
 
 function setup() {
 
-  importUserSave()
 
   createCanvas(1280, 720);
   bg = loadImage('assets/bg/bg1.png')
@@ -149,14 +162,14 @@ function draw() {
 
 function importUserSave()
 {
-    console.info("test")
+    //console.info("test")
     lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
     lvl2Highscore = parseInt(localStorage.getItem('lvl2'))
     lvl3Highscore = parseInt(localStorage.getItem('lvl3'))
     lvl4Highscore = parseInt(localStorage.getItem('lvl4'))
-    Level = parseInt(localStorage.getItem('lvl'))
-  console.info(lvl3Highscore)
-  if ((lvl1Highscore == NaN)||(lvl2Highscore == NaN)||(lvl3Highscore == NaN)||(lvl4Highscore == NaN)||(Level == NaN))
+    
+  //console.info(lvl3Highscore)
+  if ((isNaN(lvl1Highscore))||(isNaN(lvl2Highscore))||(isNaN(lvl3Highscore))||(isNaN(lvl4Highscore)))
     {
 
       console.info("test2")
@@ -164,13 +177,13 @@ function importUserSave()
       localStorage.setItem('lvl2', 0)
       localStorage.setItem('lvl3', 0)
       localStorage.setItem('lvl4', 0)
-      localStorage.setItem('lvl', 1)
+      
 
       lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
       lvl2Highscore = parseInt(localStorage.getItem('lvl2'))
       lvl3Highscore = parseInt(localStorage.getItem('lvl3'))
       lvl4Highscore = parseInt(localStorage.getItem('lvl4'))
-      Level = parseInt(localStorage.getItem('lvl'))
+     
     }
   
  
@@ -353,6 +366,8 @@ function checkWin()
 {
   if (player.x >= levelSelector.endX)
     {
+      HS.incrementLevel()
+      HS.updateLocalStorage()
       console.info("Level " + levelSelector.level + " complete!")
       platformList.forEach(element => {
         element.x = 0
@@ -366,8 +381,6 @@ function checkWin()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
       player.y = 200
-      HS.updateLocalStorage()
-      HS.currentLevel++
     }
 }
 

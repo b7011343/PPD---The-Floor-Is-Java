@@ -1,9 +1,16 @@
 function Highscore(currentLevel){
     this.currentLevel = currentLevel
+    this.storedLevel
     
-
     this.updateLocalStorage = function()
     {
+        this.storedLevel = (parseInt(localStorage.getItem('lvl')))
+        if (this.storedLevel != this.currentLevel)
+        {
+            console.info("fire")
+            localStorage.setItem('lvl', this.currentLevel)
+        }
+
         switch (currentLevel){
             case 1:
             {
@@ -32,8 +39,13 @@ function Highscore(currentLevel){
         }
     }
 
-    this.levelComplete = function(){
-
+    this.incrementLevel = function()
+    {
+        this.currentLevel++
+        if (this.currentLevel > 4)
+        {
+            console.info("GAME COMPLETE")
+        }
     }
 
 }
