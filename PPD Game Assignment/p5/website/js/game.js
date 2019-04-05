@@ -33,22 +33,32 @@ var bgMusic
 var devMode;
 var levelSelector
 var player = new Player(-500,200); 
-var HS = new Highscore(1)
+var HS
 var platformList
 var spikeList
 let menuBG
 var muteFlag = true
 var mX = mouseX
-var currentLevel = 1
+
+var curLevel 
+
+var lvl1Highscore
+var lvl2Highscore
+var lvl3Highscore
+var lvl4Highscore
 
 
 function preload()
 {
   bgMusic = loadSound("assets/mainMusic.mp3")
   deathSound = loadSound("assets/scream.mp3")
+  HS = new Highscore(1)
 }
 
 function setup() {
+
+  importUserSave()
+
   createCanvas(1280, 720);
   bg = loadImage('assets/bg/bg1.png')
   deathSound = loadSound("assets/scream.mp3")
@@ -115,6 +125,14 @@ function draw() {
     {
       translate(-player.x+590, 0)
       mX = (mouseX+player.x-590)
+      //HS.updateLocalStorage()
+
+      importUserSave()
+      //console.info(lvl1Highscore)
+      //console.info(lvl2Highscore)
+      //console.info(lvl3Highscore)
+      //console.info(lvl4Highscore)
+
       updateBackground()
       updateGame()
       break;
@@ -127,6 +145,35 @@ function draw() {
 
     }
   }
+}
+
+function importUserSave()
+{
+    console.info("test")
+    lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
+    lvl2Highscore = parseInt(localStorage.getItem('lvl2'))
+    lvl3Highscore = parseInt(localStorage.getItem('lvl3'))
+    lvl4Highscore = parseInt(localStorage.getItem('lvl4'))
+    Level = parseInt(localStorage.getItem('lvl'))
+  console.info(lvl3Highscore)
+  if ((lvl1Highscore == NaN)||(lvl2Highscore == NaN)||(lvl3Highscore == NaN)||(lvl4Highscore == NaN)||(Level == NaN))
+    {
+
+      console.info("test2")
+      localStorage.setItem('lvl1', 0)
+      localStorage.setItem('lvl2', 0)
+      localStorage.setItem('lvl3', 0)
+      localStorage.setItem('lvl4', 0)
+      localStorage.setItem('lvl', 1)
+
+      lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
+      lvl2Highscore = parseInt(localStorage.getItem('lvl2'))
+      lvl3Highscore = parseInt(localStorage.getItem('lvl3'))
+      lvl4Highscore = parseInt(localStorage.getItem('lvl4'))
+      Level = parseInt(localStorage.getItem('lvl'))
+    }
+  
+ 
 }
 
 function hideMenuButtons()
@@ -167,6 +214,7 @@ function mousePressed()
   }
   if (btnHighscores.overButton()){
     menuFlag = 3
+    importUserSave()
     setup()
   }
   
@@ -271,7 +319,7 @@ function updateGame(){
   btnMute.x = player.x+530
   btnQuit.display()
   btnQuit.x = player.x-575
-  HS.updateScore()
+  //HS.updateLocalStorage()
 
   checkPlatforms()
   displaySpikes()
@@ -318,6 +366,8 @@ function checkWin()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
       player.y = 200
+      HS.updateLocalStorage()
+      HS.currentLevel++
     }
 }
 
@@ -373,7 +423,9 @@ function death()
   
   if (player.isDead())
     {
+      HS.updateLocalStorage()
       bgMusic.stop()
+      
       
       deathSound.play()
       backgroundTiles = [imgX1, imgX2, imgX3]
