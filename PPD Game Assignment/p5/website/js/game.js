@@ -1,6 +1,7 @@
 // Menu Variables
 menuFlag = 0   // 0 = Menu      1 = Level Selection Screen      2 = Game
 btnBack = new Button(10, 660, 100, 50, 255, 97, 48, "<=Back")
+btnBackHS = new Button(10, 660, 100, 50, 255, 97, 48, "<=Back")
 // Button(x, y, width, height, fillR, fillG, fillB, message)
 // Menu Buttons
 var btnPlay = new Button(490, 250, 300, 100, 255, 97, 48, "Play")
@@ -18,6 +19,7 @@ var btnLevel4 = new Button(490, 450, 300, 50, 255, 97, 48, "Level 4")
 var btnQuit = new Button(10, 660, 150, 50, 255, 97, 48, "Quit")
 var btnMute = new Button(1120, 660, 150, 50, 255, 97, 48, "Mute")
 
+
 // Game Variables
 var bgCounter = 0
 var imgX1 = -1280
@@ -31,11 +33,14 @@ var bgMusic
 var devMode;
 var levelSelector
 var player = new Player(-500,200); 
+var HS = new Highscore(1)
 var platformList
 var spikeList
 let menuBG
 var muteFlag = true
 var mX = mouseX
+var currentLevel = 1
+
 
 function preload()
 {
@@ -69,6 +74,10 @@ function setup() {
       //frameRate(120)
       bgMusic.play()
       break;
+    }
+
+    case 3:{
+      
     }
   }
 }
@@ -110,6 +119,13 @@ function draw() {
       updateGame()
       break;
     }
+    case 3:{
+      image(menuBG, 0, 0)
+      hideMenuButtons()
+      hideGameButtons()
+      btnBackHS.display()
+
+    }
   }
 }
 
@@ -149,10 +165,22 @@ function mousePressed()
     menuFlag = 1
     setup()
   }
+  if (btnHighscores.overButton()){
+    menuFlag = 3
+    setup()
+  }
+  
+  if (btnBackHS.overButton())
+  {
+    console.log("got here")
+    menuFlag = 0
+    setup()
+  }
   if (menuFlag == 1){
     if (btnBack.overButton())
     {
-      menuFlag--
+      console.log("got here")
+      menuFlag = 0
       setup()
     }
     if (btnLevel0.overButton())
@@ -243,13 +271,16 @@ function updateGame(){
   btnMute.x = player.x+530
   btnQuit.display()
   btnQuit.x = player.x-575
- 
+  HS.updateScore()
+
   checkPlatforms()
   displaySpikes()
   screenScroll()
   death()
   checkWin()
   displayMessage()
+
+
 }
 
 function keyPressed()

@@ -36,7 +36,7 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
     this.overButton = function()
     {
         
-        if ((menuFlag==0)||(menuFlag==1))
+        if ((menuFlag==0)||(menuFlag==1) || (menuFlag == 3))
         {
             mX = mouseX;
         }
