@@ -40,7 +40,7 @@ let menuBG
 var muteFlag = true
 var mX = mouseX
 
-var curLevel 
+var Level 
 
 var lvl1Highscore
 var lvl2Highscore
@@ -141,10 +141,7 @@ function draw() {
       //HS.updateLocalStorage()
 
       importUserSave()
-      //console.info(lvl1Highscore)
-      //console.info(lvl2Highscore)
-      //console.info(lvl3Highscore)
-      //console.info(lvl4Highscore)
+      
 
       updateBackground()
       updateGame()
@@ -155,10 +152,50 @@ function draw() {
       hideMenuButtons()
       hideGameButtons()
       btnBackHS.display()
-
+      updateHighScores()
     }
   }
 }
+
+function updateHighScores()
+{
+  fill(255, 97, 48)
+  stroke(0)
+  strokeWeight(3)
+  rect(350, 230, 565, 410)
+  strokeWeight(0)
+  fill(0)
+  textSize(50)
+  textAlign(CENTER)
+
+  if (Level == 4)
+  {
+    text("GAME COMPLETE!", 640, 300)
+  }
+  else{
+    text("Current Level: " + Level, 640, 300)
+  }
+  text("Attempts To Complete: ", 640, 375)
+  textAlign(LEFT)
+  text("-Level 1:    " + lvl1Highscore, 400, 435)
+  if (Level < 2)
+  {
+    lvl2Highscore = "🔒"
+  }
+  text("-Level 2:    " + lvl2Highscore, 400, 495)
+  if (Level < 3)
+  {
+    lvl3Highscore = "🔒"
+  }
+  text("-Level 3:    " + lvl3Highscore, 400, 555)
+  if (Level < 4)
+  {
+    lvl4Highscore = "🔒"
+  }
+  text("-Level 4:    " + lvl4Highscore, 400, 615)
+}
+
+
 
 function importUserSave()
 {
@@ -254,15 +291,33 @@ function mousePressed()
     }
     if (btnLevel2.overButton())
     {
-      startLevel(2)
+      if(Level >= 2)
+      {
+        startLevel(2)
+      }
+      else{
+        alert("You have not completed level 1 yet!")
+      }
     }
     if (btnLevel3.overButton())
     {
-      startLevel(3)
+      if(Level >= 3)
+      {
+        startLevel(3)
+      }
+      else{
+        alert("You have not completed level 2 yet!")
+      }
     }
     if (btnLevel4.overButton())
     {
-      startLevel(4)
+      if(Level >= 4)
+      {
+        startLevel(4)
+      }
+      else{
+        alert("You have not completed level 3 yet!")
+      }
     }
   }
   else{
@@ -368,6 +423,7 @@ function checkWin()
     {
       HS.incrementLevel()
       HS.updateLocalStorage()
+      Level = HS.currentLevel
       console.info("Level " + levelSelector.level + " complete!")
       platformList.forEach(element => {
         element.x = 0

@@ -45,6 +45,8 @@ function Highscore(currentLevel){
         if (this.currentLevel > 4)
         {
             console.info("GAME COMPLETE")
+            currentLevel = 4
+            alert("CONGRATULATION! YOU HAVE COMPLETED THE GAME!")
         }
     }
 
