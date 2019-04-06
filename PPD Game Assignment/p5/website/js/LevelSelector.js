@@ -108,14 +108,36 @@ function LevelSelector(level){
             }
             case 4:     //LEVEL 4 (GEORGE)
             {
-                this.endX = 200
-                this.endY = 300
+                this.endX = 2700
+                this.endY = 400
                 endFlag = new EndFlag(this.endX, this.endY)
-                var plat1 = new Platform(-1280, 300, 50, 1600)
-                
+
+                var plat1  = new Platform(-1280, 300, 50, 1600)
+                var plat2  = new Platform(plat1.endX  + 150, 600, 50, 300)
+                var plat3  = new Platform(plat2.endX  + 150, 550, 50, 100)
+                var plat4  = new Platform(plat3.endX  + 150, 500, 50, 100)
+                var plat5  = new Platform(plat4.endX  + 150, 500, 50, 300)
+
+                var plat6  = new Platform(plat1.endX  + 250, 250, 50, 100)
+                var plat7  = new Platform(plat6.endX  + 150, 250, 50, 100)
+                var plat8  = new Platform(plat7.endX  + 200, 200, 50, 100)
+
+                var plat9  = new Platform(plat5.endX  + 150, 450, 50, 100)
+                var plat10 = new Platform(plat9.endX  + 150, 430, 50, 50 )
+                var plat11 = new Platform(plat10.endX + 150, 410, 50, 25 )
+                var plat12 = new Platform(plat11.endX + 150, 390, 50, 10 )
+
+                var platEnd = new Platform(plat12.endX + 150, 400, 50, 200)
+                console.info(platEnd.x)
+
+                var spike1 = new Spikes(plat1.endX + 150, 600)
+                var spike2 = new Spikes(plat4.endX + 250, 500)
+
+
                 this.message = "-LEVEL 4-"
 
-                platformList = [plat1]
+                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, platEnd]
+                spikeList = [spike1, spike2]
             }
         }
     }
