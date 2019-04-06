@@ -340,6 +340,7 @@ function mousePressed()
         player.x = -500
         player.y = 200
         menuFlag = 1
+        bgMusic.stop()
         setup()
       }
   }

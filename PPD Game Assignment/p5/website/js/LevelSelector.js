@@ -60,34 +60,36 @@ function LevelSelector(level){
             }
             case 2:     // LEVEL 2 (JOE)
             {
-                this.endX = 6280
+                this.endX = 6250
                 this.endY = 300
                 endFlag = new EndFlag(this.endX, this.endY)
                 var plat1 = new Platform(-1280, 300, 50, 1600)
-                var plat2 = new Platform(550, 300, 50, 100)
-                var plat3 = new Platform(880, 225, 50, 100)
-                var plat4 = new Platform(1210, 300, 50, 100)
-                var plat5 = new Platform(1540, 300, 50, 350)
-                var plat6 = new Platform(2120, 300, 50, 950)
-                var plat7 = new Platform(3300, 300, 50, 100)
-                var plat8 = new Platform(3630, 225, 50, 100)
-                var plat9 = new Platform(3960, 150, 50, 100)
-                var plat10 = new Platform(4290, 75, 50, 100)
-                var plat11 = new Platform(4290, 300, 50, 100)
-                var plat12 = new Platform(4620, 300, 50, 800)
-                var plat13 = new Platform(5650, 300, 50, 100)
-                var plat14 = new Platform(5980, 300, 50, 500)
+                var plat2 = new Platform(520, 300, 50, 100)
+                var plat3 = new Platform(790, 250, 50, 100)
+                var plat4 = new Platform(1090, 300, 50, 100)
+                var plat5 = new Platform(1390, 300, 50, 350)
+                var plat6 = new Platform(1940, 300, 50, 950)
+                var plat7 = new Platform(3090, 300, 50, 100)
+                var plat8 = new Platform(3360, 250, 50, 100)
+                var plat9 = new Platform(3630, 200, 50, 100)
+                var plat10 = new Platform(3975, 150, 50, 100)
+                var plat11 = new Platform(3900, 350, 50, 100)
+                var plat12 = new Platform(4200, 300, 50, 800)
+                var plat13 = new Platform(5200, 300, 50, 100)
+                var plat14 = new Platform(5470, 250, 50, 100)
+                var plat15 = new Platform(5770, 300, 50, 500)
 
-                var spike1 = new Spikes(1715, 300)
-                var spike2 = new Spikes(2350, 300)
-                var spike3 = new Spikes(2480, 300)
-                var spike4 = new Spikes(2810, 300)
-                var spike5 = new Spikes(4290, 75)
+                var spike1 = new Spikes(1550, 300)
+                var spike2 = new Spikes(2117, 300)
+                var spike3 = new Spikes(2414, 300)
+                var spike4 = new Spikes(2651, 300)
+                var spike5 = new Spikes(4000, 150)
+                var spike6 = new Spikes(4600, 300)
 
                 this.message = "-LEVEL 2-"
 
-                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, plat13, plat14]
-                spikeList = [spike1, spike2, spike3, spike4, spike5]
+                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, plat13, plat14, plat15]
+                spikeList = [spike1, spike2, spike3, spike4, spike5, spike6]
                 break;
 
             }
