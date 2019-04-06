@@ -3,6 +3,7 @@ function Platform(x, y, height, width){
   this.y = y
   this.width = width
   this.height = height
+  this.endX = x + width
   this.firstIteration = true
   this.hasPlayerOn = false
 
