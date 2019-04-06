@@ -1,5 +1,6 @@
 function Button(x, y, width, height, fillR, fillG, fillB, message)
 {
+    // variables
     this.x = x;
     this.y = y;
     this.height = height;
@@ -10,7 +11,7 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
     this.message = message;
     this.visible = false
 
-    this.display = function()
+    this.display = function() // displays the button on screen
     {
         this.visible = true
         var strokeColour = 0
@@ -33,7 +34,7 @@ function Button(x, y, width, height, fillR, fillG, fillB, message)
         
     }
 
-    this.overButton = function()
+    this.overButton = function() // checks if mouse is over the button
     {
         
         if ((menuFlag==0)||(menuFlag==1) || (menuFlag == 3))

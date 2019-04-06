@@ -1,4 +1,6 @@
 function Platform(x, y, height, width){
+
+  // variables
   this.x = x
   this.y = y
   this.width = width
@@ -7,7 +9,7 @@ function Platform(x, y, height, width){
   this.firstIteration = true
   this.hasPlayerOn = false
 
-  this.display = function(){
+  this.display = function(){ // displays the playform on the screen
     fill(51, 51, 255)
     strokeWeight(2)
     stroke(255)
@@ -15,7 +17,7 @@ function Platform(x, y, height, width){
     this.collision();
   }
   
-  this.collision = function(){
+  this.collision = function(){ // checks if the player is touching the platform
     if ((player.x+ player.length == this.x) && (player.y < this.y+height) && (player.y+player.length > this.y))
     {
       player.x-=5

@@ -1,13 +1,14 @@
 function Highscore(currentLevel){
-    this.currentLevel = currentLevel
+
+    // variables
+    this.currentLevel = currentLevel 
     this.storedLevel
     
-    this.updateLocalStorage = function()
+    this.updateLocalStorage = function() // increments the highscore everytime the player dies
     {
         this.storedLevel = (parseInt(localStorage.getItem('lvl')))
         if (this.storedLevel != this.currentLevel)
         {
-            console.info("fire")
             localStorage.setItem('lvl', this.currentLevel)
         }
 
@@ -39,12 +40,11 @@ function Highscore(currentLevel){
         }
     }
 
-    this.incrementLevel = function()
+    this.incrementLevel = function() // increments the level after completion
     {
         this.currentLevel++
         if (this.currentLevel > 4)
         {
-            console.info("GAME COMPLETE")
             this.currentLevel = 4
             alert("CONGRATULATION! YOU HAVE COMPLETED THE GAME!")
         }

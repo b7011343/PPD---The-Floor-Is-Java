@@ -1,15 +1,16 @@
-
 function LevelSelector(level){
     
+    // variables
     this.level = level
     this.endX
     this.endY
     this.message
     // max x distance a player can jump on the same y level is 235+100(player width)
 
-    this.levelSelect = function()
+    this.levelSelect = function() // level builder with the platforms, spikes, and end flag
     {
-        spikeList = []
+        spikeList = [] // list to store all the spike objects
+        platformList = [] // list to store all the platform objects
         switch (this.level)
         {
             case 0:     // TUTORIAL LEVEL (DESIGNED AS A GROUP) / testing
@@ -128,7 +129,6 @@ function LevelSelector(level){
                 var plat12 = new Platform(plat11.endX + 150, 390, 50, 10 )
 
                 var platEnd = new Platform(plat12.endX + 150, 400, 50, 200)
-                console.info(platEnd.x)
 
                 var spike1 = new Spikes(plat1.endX + 150, 600)
                 var spike2 = new Spikes(plat4.endX + 250, 500)
