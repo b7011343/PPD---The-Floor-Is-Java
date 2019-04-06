@@ -88,7 +88,8 @@ function LevelSelector(level){
 
                 this.message = "-LEVEL 2-"
 
-                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, plat13, plat14, plat15]
+                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10,
+                                plat11, plat12, plat13, plat14, plat15]
                 spikeList = [spike1, spike2, spike3, spike4, spike5, spike6]
                 break;
 
