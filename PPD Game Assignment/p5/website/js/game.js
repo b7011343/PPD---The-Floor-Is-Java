@@ -423,8 +423,9 @@ function checkWin()
   if (player.x >= levelSelector.endX)
     {
       HS.incrementLevel()
-      HS.updateLocalStorage()
+      
       Level = HS.currentLevel
+      HS.updateLocalStorage()
       console.info("Level " + levelSelector.level + " complete!")
       platformList.forEach(element => {
         element.x = 0
