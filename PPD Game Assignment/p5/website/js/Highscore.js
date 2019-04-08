@@ -43,9 +43,9 @@ function Highscore(currentLevel){
     this.incrementLevel = function() // increments the level after completion
     {
         this.currentLevel++
-        if (this.currentLevel > 4)
+        if (this.currentLevel == 4)
         {
-            this.currentLevel = 4
+            //this.currentLevel = 4
             alert("CONGRATULATION! YOU HAVE COMPLETED THE GAME!")
         }
     }
