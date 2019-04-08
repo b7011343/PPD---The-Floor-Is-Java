@@ -53,7 +53,7 @@ function LevelSelector(level){
                 var plat13 = new Platform(4510, 500, 50, 10)
                 var plat14 = new Platform(4750, 475, 50, 350)
 
-                this.message = "-LEVEL 1-"
+                this.message = "LEVEL 1 :: The {"
 
                 platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10,
                                 plat11, plat12, plat13, plat14]
@@ -87,7 +87,7 @@ function LevelSelector(level){
                 var spike5 = new Spikes(4000, 150)
                 var spike6 = new Spikes(4600, 300)
 
-                this.message = "-LEVEL 2-"
+                this.message = "LEVEL 2 :: Electric Boogaloo"
 
                 platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10,
                                 plat11, plat12, plat13, plat14, plat15]
@@ -134,7 +134,7 @@ function LevelSelector(level){
                 var spike2 = new Spikes(plat4.endX + 250, 500)
 
 
-                this.message = "-LEVEL 4-"
+                this.message = "LEVEL 4 :: The }"
 
                 platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, plat11, plat12, platEnd]
                 spikeList = [spike1, spike2]

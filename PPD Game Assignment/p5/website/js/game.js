@@ -39,6 +39,8 @@ var spikeList
 let menuBG
 var muteFlag = true
 var mX = mouseX
+var activeLevel
+var onScreenAttempts
 
 // unlocked levels
 var Level 
@@ -167,7 +169,7 @@ function updateHighScores() // get highscore from local storage and display on t
   textSize(50)
   textAlign(CENTER)
 
-  if (Level == 4)
+  if (Level > 4)
   {
     text("GAME COMPLETE!", 640, 300)
   }
@@ -282,16 +284,19 @@ function mousePressed() // only called when the mouse is clicked
     if (btnLevel0.overButton())
     {
       startLevel(0)
+      activeLevel = 0
     }
     if (btnLevel1.overButton())
     {
       startLevel(1)
+      activeLevel = 1
     }
     if (btnLevel2.overButton())
     {
       if(Level >= 2)
       {
         startLevel(2)
+        activeLevel = 2
       }
       else{
         alert("You have not completed level 1 yet!")
@@ -302,6 +307,7 @@ function mousePressed() // only called when the mouse is clicked
       if(Level >= 3)
       {
         startLevel(3)
+        activeLevel = 3
       }
       else{
         alert("You have not completed level 2 yet!")
@@ -312,6 +318,7 @@ function mousePressed() // only called when the mouse is clicked
       if(Level >= 4)
       {
         startLevel(4)
+        activeLevel = 4
       }
       else{
         alert("You have not completed level 3 yet!")
@@ -386,7 +393,7 @@ function updateGame(){ // called every game loop -- used to update and chack the
   btnMute.x = player.x+530
   btnQuit.display()
   btnQuit.x = player.x-575
-
+  importUserSave()
   checkPlatforms()
   displaySpikes()
   screenScroll()
@@ -411,6 +418,38 @@ function displayMessage() // displays the current level at the top of the screen
     fill(255)
     stroke(0)
     text(levelSelector.message, 640-300, 50)
+
+
+    switch (activeLevel)
+    {
+      case 1:
+      {
+        onScreenAttempts = lvl1Highscore
+        break;
+      }
+      case 2:
+      {
+        onScreenAttempts = lvl2Highscore
+        break;
+      }
+      case 3:
+      {
+        onScreenAttempts = lvl3Highscore
+        break;
+      }
+      case 4:
+      {
+        onScreenAttempts = lvl4Highscore
+        break;
+      }
+      default:
+      break;
+    }
+    textAlign(RIGHT)
+    if (activeLevel != 0)
+    {
+      text("Attempts: " + onScreenAttempts, -75, 50)
+    }
     stroke(255)
 }
 
