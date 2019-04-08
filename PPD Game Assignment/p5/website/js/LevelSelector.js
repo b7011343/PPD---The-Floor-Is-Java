@@ -74,8 +74,8 @@ function LevelSelector(level){
                 var plat8 = new Platform(3360, 250, 50, 100)
                 var plat9 = new Platform(3630, 200, 50, 100)
                 var plat10 = new Platform(3975, 150, 50, 100)
-                var plat11 = new Platform(3900, 350, 50, 100)
-                var plat12 = new Platform(4200, 300, 50, 800)
+                var plat11 = new Platform(3900, 400, 50, 100)
+                var plat12 = new Platform(4200, 350, 50, 800)
                 var plat13 = new Platform(5200, 300, 50, 100)
                 var plat14 = new Platform(5470, 250, 50, 100)
                 var plat15 = new Platform(5770, 300, 50, 500)
@@ -85,15 +85,18 @@ function LevelSelector(level){
                 var spike3 = new Spikes(2414, 300)
                 var spike4 = new Spikes(2651, 300)
                 var spike5 = new Spikes(4000, 150)
-                var spike6 = new Spikes(4600, 300)
+                var spike6 = new Spikes(4350, 350)
+                var spike7 = new Spikes(4600, 350)
+                var spike8 = new Spikes(4850, 350)
+                var spike9 = new Spikes(6020, 300)
+                var spike10 = new Spikes(6070, 300)
 
-                this.message = "LEVEL 2 :: Electric Boogaloo"
+                this.message = "LEVEL 2 :: The Electric Boogaloo"
 
-                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10,
+                platformList = [plat1, plat2, plat3, plat4, plat5, plat6, plat7, plat8, plat9, plat10, 
                                 plat11, plat12, plat13, plat14, plat15]
-                spikeList = [spike1, spike2, spike3, spike4, spike5, spike6]
+                spikeList = [spike1, spike2, spike3, spike4, spike5, spike6, spike7, spike8, spike9, spike10]
                 break;
-
             }
             case 3:     // LEVEL 3 (CONNOR)
             {

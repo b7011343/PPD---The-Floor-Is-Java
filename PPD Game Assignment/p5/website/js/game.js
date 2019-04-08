@@ -435,9 +435,14 @@ function displayMessage() // displays the current level at the top of the screen
       break;
     }
     textAlign(RIGHT)
-    if (activeLevel != 0)
+    if ((activeLevel != 0) && (activeLevel >= Level))
     {
       text("Attempts: " + onScreenAttempts, -75, 50)
+    }
+    else if (activeLevel != 0){
+      fill(0, 255, 0)
+      text("COMPLETE!", -75, 50)
+      fill(255)
     }
     stroke(255)
 }
