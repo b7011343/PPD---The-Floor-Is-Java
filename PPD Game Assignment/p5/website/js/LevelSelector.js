@@ -97,14 +97,60 @@ function LevelSelector(level){
             }
             case 3:     // LEVEL 3 (CONNOR)
             {
-                this.endX = 200
-                this.endY = 300
+                this.endX = 6250
+                this.endY = 350
                 endFlag = new EndFlag(this.endX, this.endY)
                 var plat1 = new Platform(-1280, 300, 50, 1600)
+                var plat2 = new Platform(580, 450, 50, 100)
+                var plat3 = new Platform(915, 450 , 50, 80)
+                var plat4 = new Platform(1250, 450 , 50, 60)
+                var plat5 = new Platform(1585, 450 , 50, 40)
+                var plat6 = new Platform(1920, 450 , 50, 20)
+                var plat7 = new Platform(2245, 450 , 50, 10)
+                var plat8 = new Platform(2530, 400 , 50, 100)
+                var plat9 = new Platform(2845, 400 , 50, 100)
+                var plat10 = new Platform(3120, 350 , 50, 100)
+                var plat11 = new Platform(3455, 350 , 50, 2795)
+
+                var spike1 = new Spikes(100, 300)
+                
+                var spike2 = new Spikes(3600, 350)
+                var spike10 = new Spikes(3650, 350)
+                
+                var spike3 = new Spikes(3900, 350)
+                var spike11 = new Spikes(3950, 350)
+                
+                var spike4 = new Spikes(4200, 350)
+                var spike12 = new Spikes(4250, 350)
+                
+                var spike5 = new Spikes(4500, 350)
+                var spike13 = new Spikes(4550, 350)
+                
+                var spike6 = new Spikes(4800, 350)
+                var spike14 = new Spikes(4850, 350)
+                
+                var spike7 = new Spikes(5100, 350)
+                var spike15 = new Spikes(5150, 350)
+                
+                var spike8 = new Spikes(5400, 350)
+                var spike16 = new Spikes(5450, 350)
+
+                var spike9 = new Spikes(5700, 350)
+                var spike17 = new Spikes(5750, 350)
+
+                
+                var spike18 = new Spikes(6000, 350)
+                var spike19 = new Spikes(6050, 350)
+                
+
+               
+               
+
                 
                 this.message = "-LEVEL 3-"
 
-                platformList = [plat1]
+                platformList = [plat1,plat2,plat3,plat4,plat5,plat6,plat7,plat8,plat9,plat10,plat11]
+                spikeList = [spike1, spike2, spike3, spike4, spike5, spike6, spike7, spike8, spike9, spike10, spike11, spike12, spike13, spike14, spike15, spike16, spike17, spike18, spike19]
                 break;
             }
             case 4:     //LEVEL 4 (GEORGE)
