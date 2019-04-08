@@ -72,8 +72,6 @@ function preload() // load assets and local storage
 }
 
 function setup() { // setup assets and navigate menus
-
-
   createCanvas(1280, 720);
   bg = loadImage('assets/bg/bg1.png')
   deathSound = loadSound("assets/scream.mp3")
@@ -102,7 +100,7 @@ function setup() { // setup assets and navigate menus
     }
 
     case 3:{
-      
+      break;
     }
   }
 }
@@ -196,8 +194,6 @@ function updateHighScores() // get highscore from local storage and display on t
   text("-Level 4:    " + lvl4Highscore, 400, 615)
 }
 
-
-
 function importUserSave() // get the users previous data from local storage
 {
     lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
@@ -213,16 +209,12 @@ function importUserSave() // get the users previous data from local storage
       localStorage.setItem('lvl2', 0)
       localStorage.setItem('lvl3', 0)
       localStorage.setItem('lvl4', 0)
-      
-
+    
       lvl1Highscore = parseInt(localStorage.getItem('lvl1'))
       lvl2Highscore = parseInt(localStorage.getItem('lvl2'))
       lvl3Highscore = parseInt(localStorage.getItem('lvl3'))
       lvl4Highscore = parseInt(localStorage.getItem('lvl4'))
-     
     }
-  
- 
 }
 
 function hideMenuButtons() // hides buttons on the main menu
@@ -351,7 +343,6 @@ function mousePressed() // only called when the mouse is clicked
   }
 }
 
-
 function updateBackground() // moves the background with the player
 {
   image(bg, backgroundTiles[0], 0)
@@ -400,8 +391,6 @@ function updateGame(){ // called every game loop -- used to update and chack the
   death()
   checkWin()
   displayMessage()
-
-
 }
 
 function keyPressed() // only called when a key is pressed
@@ -453,8 +442,6 @@ function displayMessage() // displays the current level at the top of the screen
     stroke(255)
 }
 
-
-
 function checkWin() // checks to see if the player is past the end flag's x coordinate 
 {
   if (player.x >= levelSelector.endX)
@@ -485,7 +472,6 @@ function screenScroll(){ // scrolls the scrren
     player.x += 5
 }
 
-
 function checkPlatforms() // loops through the plaform list displaying and checking if the player is on a platform
 {
   player.onSurface = false
@@ -505,14 +491,9 @@ function displaySpikes(){ // loops through the spike list displaying and killing
   })
 }
 
-
-
-
 var count = 2
 function drawLava() // draws the lava at the bottom of the screen
 {
-
-  
   bg = loadImage('assets/bg/bg'+count+'.png')
   
   if (count < 10){
@@ -521,19 +502,14 @@ function drawLava() // draws the lava at the bottom of the screen
   else{
     count = 1
   }
- 
 }
-
 
 function death() // checks if the player is dead
 {
-  
   if (player.isDead())
     {
       HS.updateLocalStorage()
       bgMusic.stop()
-      
-      
       deathSound.play()
       backgroundTiles = [imgX1, imgX2, imgX3]
       player.x = -500
